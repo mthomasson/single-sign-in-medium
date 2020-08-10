@@ -1,0 +1,14 @@
+{
+  "name": "single-sign-in-medium",
+  "version": "0.0.0",
+  "description": "Minimal Single sign in application",
+  "author": "mthomasson@bloom-partners.com",
+  "license": "ISC",
+  "scripts": {
+
+  },
+  "devDependencies": {
+    
+  },
+  "dependencies": {}
+}
