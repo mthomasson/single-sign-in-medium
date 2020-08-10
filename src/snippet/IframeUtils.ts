@@ -1,10 +1,14 @@
 
 export class IframeUtils {
-
+    private static iframeId: string = 'io3-single-sign-in-iframe';
+    /**
+     * method that spawns an iframe on the document's body
+     * @param rootUrl
+     */
     public static createIframe(rootUrl): HTMLIFrameElement {
         const iframe = document.createElement('iframe')
         iframe.src = `${rootUrl}/index.html`
-        iframe.id = 'io3-single-sign-in-iframe';
+        iframe.id = IframeUtils.iframeId;
         // hide the iframe
         iframe.style.visibility = 'hidden';
         iframe.style.position = 'fixed';
@@ -16,8 +20,11 @@ export class IframeUtils {
         return iframe
     }
 
+    /**
+     * Method that returns
+     */
     public static getIframe(): HTMLIFrameElement {
-        return document.getElementById('io3-single-sign-in-iframe') as HTMLIFrameElement;
+        return document.getElementById(IframeUtils.iframeId) as HTMLIFrameElement;
     }
 
     public static sendMessage(data: any, origin: string) {
