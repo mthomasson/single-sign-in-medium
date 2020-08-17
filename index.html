@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="http://localhost:8080/snippet.js" onload="console.log('loaded')"></script>
+<script>
+    setTimeout(()=> {
+        window.io3SingleSignIn.storeAuthToken('test-token').then((res) => {
+            console.log(res);
+            window.io3SingleSignIn.getAuthToken().then((response) => {
+                console.log(response);
+                window.io3SingleSignIn.deleteAuthToken('test-token').then((res) => {
+                    console.log(res);
+                    window.io3SingleSignIn.deleteAuthToken('test-token').then((res) => {
+                        console.log(res);
+                    }, (err) => {
+                        console.log(err)
+                    })
+                }, (err) => {
+                    console.log(err)
+                })
+            }, (error) => {
+                console.log(error)
+            })
+        })
+    }, 200)
+</script>
+</body>
+</html>
+
