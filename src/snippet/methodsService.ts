@@ -1,5 +1,5 @@
 import {IframeEventsEnum} from "../shared/enums/iframe-events.enum";
-import {ScriptEventsEnum} from "../shared/enums/script-events.enum";
+import {SnippetEventsEnum} from "../shared/enums/snippet-events.enum";
 import {IframeUtils} from "./IframeUtils";
 import {MessageEventModel} from "../shared/models/MessageEvent.model";
 
