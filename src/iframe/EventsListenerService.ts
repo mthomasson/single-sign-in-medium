@@ -38,14 +38,46 @@ export class EventsListenerService {
     }
 
     private static handleAuthTokenRequest() {
-
+        LocalStorageUtils.checkLocalStorageExistence();
+        if (localStorage.getItem('authToken') && localStorage.getItem('authToken').length) {
+            window.parent.postMessage({
+                name: IframeEventsEnum.AUTH_TOKEN_RESPONSE,
+                content: {
+                    authToken: localStorage.getItem('authToken')
+                }
+            }, '*');
+        } else {
+            window.parent.postMessage({
+                name: IframeEventsEnum.AUTH_TOKEN_MISSING
+            }, '*');
+        }
     }
 
     private static handleStoreAuthToken(data: MessageEventDataModel) {
-
+        LocalStorageUtils.checkLocalStorageExistence();
+        if (data.content && data.content.authToken) {
+            localStorage.setItem('authToken', data.content.authToken)
+            window.parent.postMessage({
+                name: IframeEventsEnum.AUTH_TOKEN_STORED
+            }, '*');
+        } else {
+            window.parent.postMessage({
+                name: IframeEventsEnum.AUTH_TOKEN_STORE_ERROR
+            }, '*');
+        }
     }
 
     private static handleDeleteAuthToken(data: MessageEventDataModel) {
-
+        LocalStorageUtils.checkLocalStorageExistence();
+        if (data.content && data.content.authToken && data.content.authToken === localStorage.getItem('authToken')) {
+            localStorage.removeItem('authToken')
+            window.parent.postMessage({
+                name: IframeEventsEnum.AUTH_TOKEN_DELETED
+            }, '*');
+        } else {
+            window.parent.postMessage({
+                name: IframeEventsEnum.AUTH_TOKEN_DELETE_ERROR
+            }, '*');
+        }
     }
 }
