@@ -1,4 +1,4 @@
-# single-sign-in-medium
+# Minimal Single Sign In Application
 
 It uses only typescript and webpack, to allow you to build a small application that allows you to share authentication data between different domains
 
