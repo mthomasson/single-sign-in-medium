@@ -1,0 +1,5 @@
+export enum SnippetEventsEnum {
+    GET_AUTH_TOKEN = 'GET_AUTH_TOKEN',
+    DELETE_AUTH_TOKEN = 'DELETE_AUTH_TOKEN',
+    STORE_AUTH_TOKEN = 'STORE_AUTH_TOKEN'
+}
